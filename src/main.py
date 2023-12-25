@@ -3,27 +3,13 @@ from extract_data import extract
 from data_quality_check import quality_check
 from data_processing import process_data
 import configparser
+from read_config import read_config
 
 logging.basicConfig(
     filename='app.log',
     level=logging.INFO,
     format='%(asctime)s [%(levelname)s] - %(message)s',
 )
-
-def read_config(section, option):
-    """
-    Read a configuration option from the specified section in the config file.
-
-    Parameters:
-    - section (str): The section in the configuration file.
-    - option (str): The option to retrieve from the specified section.
-
-    Returns:
-    str: The value of the specified option.
-    """
-    config = configparser.ConfigParser()
-    config.read('../config.ini')
-    return config.get(section, option)
 
 def main():
     """

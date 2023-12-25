@@ -38,7 +38,7 @@ def quality_check(df):
         # Write failed transactions to the error log table
         print('Writing Failed Checks to Error Log Table')
         write_error_log(error_df)
-
+        
         return df_passed
     except Exception as e:
         print("errors")
