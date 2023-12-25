@@ -15,10 +15,8 @@ def extract(filepath):
         print(f'Extracting Data from {filepath}')
         # Read JSON data from the file
         df = pd.read_json(f'{filepath}')
-
         # Flatten nested JSON structure
         df = pd.json_normalize(df['transactions'])
-
         return df
     except Exception as e:
         logging.error(f"An error occurred during data extraction: {str(e)}")

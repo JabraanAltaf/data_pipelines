@@ -11,13 +11,30 @@ logging.basicConfig(
 )
 
 def read_config(section, option):
+    """
+    Read a configuration option from the specified section in the config file.
+
+    Parameters:
+    - section (str): The section in the configuration file.
+    - option (str): The option to retrieve from the specified section.
+
+    Returns:
+    str: The value of the specified option.
+    """
     config = configparser.ConfigParser()
     config.read('../config.ini')
     return config.get(section, option)
 
 def main():
+    """
+    Main function to process data files based on configuration settings.
+
+    This function reads file paths from the configuration file, extracts data,
+    performs quality checks, and processes the data into the Postgres Database.
+    """
     data_filepaths = read_config('main', 'data_filepaths').split(', ')
     
+    # Run the pipeline for every data file
     for data_filepath in data_filepaths:
         print('--------------------------------------------')
         print(f'Processing File: {data_filepath}')

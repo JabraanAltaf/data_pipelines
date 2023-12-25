@@ -4,6 +4,16 @@ import pandas as pd
 from configparser import ConfigParser
 
 def read_config(section, option):
+    """
+    Read a configuration option from the specified section in the config file.
+
+    Parameters:
+    - section (str): The section in the configuration file.
+    - option (str): The option to retrieve from the specified section.
+
+    Returns:
+    str: The value of the specified option.
+    """
     config = ConfigParser()
     config.read('../config.ini')
     return config.get(section, option)
@@ -85,9 +95,7 @@ def write_error_log(error_df):
     cursor = conn.cursor()
     # Create or ensure the existence of the error log table
     create_error_log_table(cursor)
-    
     # Insert failed transactions into the error log table
     insert_error_log(cursor, error_df)
-
     # Commit changes to the database
     conn.commit()

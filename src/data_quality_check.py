@@ -27,17 +27,14 @@ def quality_check(df):
         # Identify failed transactions
         df_failed = df[~df.index.isin(df_passed.index)]
 
-       # print(df_failed)
-        # Identify DQ checks that failed for each row
+        # Identify the DQ checks that failed for each row
         error_df = pd.DataFrame(index=df_failed.index)
         error_df["transactionId"] = df_failed["transactionId"]
         error_df["customerId"] = df_failed["customerId"]
         error_df["failed_currency_check"] = ~df_failed['currency'].isin(currencies)
         error_df["failed_date_check"] = pd.to_datetime(df_failed['transactionDate'], errors='coerce').isna()
-        
         error_df["duplicated_row"] = df_failed.duplicated()
 
-        #print(df_failed)
         # Write failed transactions to the error log table
         print('Writing Failed Checks to Error Log Table')
         write_error_log(error_df)
