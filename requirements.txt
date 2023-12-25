@@ -1,0 +1,9 @@
+logging==0.4.9.6
+numpy==1.26.2
+pandas==2.1.4
+psycopg2-binary==2.9.9
+pyscopg2==66.0.2
+python-dateutil==2.8.2
+pytz==2023.3.post1
+six==1.16.0
+tzdata==2023.3
