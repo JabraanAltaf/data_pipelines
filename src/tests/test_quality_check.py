@@ -55,21 +55,3 @@ class TestDQC(unittest.TestCase):
         self.assertEqual(len(result), 2)
         self.assertFalse(any(result['transactionDate'] == '2022-93-93'))
 
-    # def test_quality_check_duplicate_records(self):
-    #     # Create a sample DataFrame with duplicate transaction records
-    #     df = pd.DataFrame({
-    #         'transactionId': ['1', '2', '2', '3'],
-    #         'customerId': ['A', 'B', 'C', 'D'],
-    #         'transactionDate': ['2021-01-01', '2021-01-02', '2021-01-02', '2021-01-03'],
-    #         'currency': ['EUR', 'USD', 'GBP', 'EUR'],
-    #         'amount': [100, 200, 300, 400],
-    #         'description': ['Desc1', 'Desc2', 'Desc2', 'Desc3']
-    #     })
-
-    #     result = quality_check(df)
-
-    #     # Validate that duplicate transactions are filtered out
-    #     self.assertEqual(len(result), 3)
-    #     self.assertFalse(any(result.duplicated(subset='transactionId')))
-
-    # Add more tests for other conditions in the quality_check function
